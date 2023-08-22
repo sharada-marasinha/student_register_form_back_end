@@ -15,17 +15,21 @@ public class StudentEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String firstName;
-    private String lastname;
-    private String dob;
+    private String lastName;
+    private String dateOfBirth;
     private String email;
     private String mobileNumber;
     private String gender;
     private String address;
     private String city;
-    private int pinCode;
+    private String pinCode;
     private String state;
     private String country;
     private String hobbies;
-    private String qualification;
-    private String coursesAppliedFor;
+    private String otherHobby;
+    private String classX;
+    private String classXII;
+    private String graduation;
+    private String masters;
+    private String selectedCourse;
 }
