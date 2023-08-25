@@ -32,4 +32,9 @@ public class StudentServiceImpl implements StudentService {
         return repository.findAll();
     }
 
+    @Override
+    public Iterable<StudentEntity> getStudentByFirstName(String firstName) {
+        return repository.findByFirstName(firstName);
+    }
+
 }

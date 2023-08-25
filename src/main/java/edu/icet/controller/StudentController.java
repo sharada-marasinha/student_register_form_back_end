@@ -21,4 +21,8 @@ public class StudentController {
     public Iterable<StudentEntity> getAllStudent(){
         return studentService.getAllStudents();
     }
+    @GetMapping("/{firstName}")
+    public Iterable<StudentEntity> getStudentByFirstName(@PathVariable String firstName){
+        return studentService.getStudentByFirstName(firstName);
+    }
 }

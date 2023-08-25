@@ -6,4 +6,6 @@ import edu.icet.dto.Student;
 public interface StudentService {
     void setStudent(Student student);
     Iterable<StudentEntity> getAllStudents();
+
+    Iterable<StudentEntity> getStudentByFirstName(String firstName);
 }
