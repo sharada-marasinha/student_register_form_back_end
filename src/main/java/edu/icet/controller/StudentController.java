@@ -6,6 +6,9 @@ import edu.icet.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/student")
@@ -18,7 +21,7 @@ public class StudentController {
         studentService.setStudent(student);
     }
     @GetMapping
-    public Iterable<StudentEntity> getAllStudent(){
+    public List<Student> getAllStudent(){
         return studentService.getAllStudents();
     }
     @GetMapping("/{firstName}")

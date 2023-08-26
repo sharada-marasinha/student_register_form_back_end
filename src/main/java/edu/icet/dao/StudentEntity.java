@@ -34,6 +34,4 @@ public class StudentEntity {
     private String graduation;
     private String masters;
     private String selectedCourse;
-    @Lob
-    private Blob image;
 }
