@@ -35,8 +35,7 @@ public class StudentServiceImpl implements StudentService {
         Iterator<StudentEntity> iterator = repository.findAll().iterator();
 
         iterator.forEachRemaining(studentEntity -> {
-            Student student = mapper.map(studentEntity, Student.class);
-            studentList.add(student);
+            studentList.add(mapper.map(studentEntity, Student.class));
         });
 
         return studentList;
