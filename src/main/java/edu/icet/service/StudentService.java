@@ -11,4 +11,8 @@ public interface StudentService {
     List<Student> getAllStudents();
 
     Iterable<StudentEntity> getStudentByFirstName(String firstName);
+
+    boolean deleteStudent(Long id);
+
+    boolean updateStudent(Long id, Student student);
 }

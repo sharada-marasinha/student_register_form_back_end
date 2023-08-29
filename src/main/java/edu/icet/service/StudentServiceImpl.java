@@ -34,10 +34,14 @@ public class StudentServiceImpl implements StudentService {
         List<Student> studentList = new ArrayList<>();
         Iterator<StudentEntity> iterator = repository.findAll().iterator();
 
+/*
         iterator.forEachRemaining(studentEntity -> {
             studentList.add(mapper.map(studentEntity, Student.class));
         });
-
+*/
+        while (iterator.hasNext()) {
+            studentList.add(mapper.map(iterator.next(), Student.class));
+        }
         return studentList;
 
     }
@@ -45,6 +49,16 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Iterable<StudentEntity> getStudentByFirstName(String firstName) {
         return repository.findByFirstName(firstName);
+    }
+
+    @Override
+    public boolean deleteStudent(Long id) {
+        return false;
+    }
+
+    @Override
+    public boolean updateStudent(Long id, Student student) {
+        return false;
     }
 
 }
