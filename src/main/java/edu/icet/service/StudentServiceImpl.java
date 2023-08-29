@@ -53,7 +53,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public boolean deleteStudent(Long id) {
-        return false;
+         repository.deleteById(id);
+        return true;
     }
 
     @Override
