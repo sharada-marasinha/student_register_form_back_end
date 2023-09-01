@@ -27,6 +27,10 @@ public class StudentController {
     public Iterable<StudentEntity> getStudentByFirstName(@PathVariable String firstName){
         return studentService.getStudentByFirstName(firstName);
     }
+    @GetMapping("std-id/{id}")
+    public Student getStudentByFirstName(@PathVariable Long id){
+        return studentService.getStudentById(id);
+    }
     @PutMapping("/{id}")
     public ResponseEntity<String> updateStudent(@PathVariable Long id, @RequestBody Student student) {
         boolean updated = studentService.updateStudent(id, student);

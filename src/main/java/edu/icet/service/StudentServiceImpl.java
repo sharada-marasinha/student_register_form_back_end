@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -60,6 +61,16 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public boolean updateStudent(Long id, Student student) {
         return false;
+    }
+
+    @Override
+    public Student getStudentById(Long id) {
+        ArrayList<Student> studentList =new ArrayList<>();
+        Iterator<StudentEntity> iterator = repository.findById(id).stream().iterator();
+        while (iterator.hasNext()){
+            studentList.add(mapper.map(iterator.next(), Student.class));
+        }
+        return studentList.get(0);
     }
 
 }
