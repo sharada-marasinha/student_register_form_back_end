@@ -1,0 +1,8 @@
+
+N	java:S106"9Replace this use of System.out or System.err by a logger.(Ğ²®
+N	java:S106"9Replace this use of System.out or System.err by a logger.(âŠø€
+B
+java:S1125"'Remove the unnecessary boolean literal.(çÎÃ™úÿÿÿÿ
+e
+java:S6201"JReplace this instanceof check and cast with 'instanceof Customer customer'(çÎÃ™úÿÿÿÿ
+N	java:S106#"9Replace this use of System.out or System.err by a logger.(ıèïĞ
