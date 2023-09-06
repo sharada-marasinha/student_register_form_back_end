@@ -6,7 +6,9 @@ import edu.icet.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
+
 
 @RestController
 @CrossOrigin
@@ -40,7 +42,6 @@ public class StudentController {
             return ResponseEntity.notFound().build();
         }
     }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteStudent(@PathVariable Long id) {
         boolean deleted = studentService.deleteStudent(id);
@@ -50,5 +51,10 @@ public class StudentController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    //----------------------------------------------------------------------------------------------------
+
+
+
 
 }

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -35,11 +34,6 @@ public class StudentServiceImpl implements StudentService {
         List<Student> studentList = new ArrayList<>();
         Iterator<StudentEntity> iterator = repository.findAll().iterator();
 
-/*
-        iterator.forEachRemaining(studentEntity -> {
-            studentList.add(mapper.map(studentEntity, Student.class));
-        });
-*/
         while (iterator.hasNext()) {
             studentList.add(mapper.map(iterator.next(), Student.class));
         }
