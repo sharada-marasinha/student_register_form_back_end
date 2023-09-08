@@ -3,7 +3,6 @@ package edu.icet.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,5 +26,6 @@ public class Student {
     private String graduation;
     private String masters;
     private String selectedCourse;
-
+    private String imageName;
+    private String imagePath;
 }

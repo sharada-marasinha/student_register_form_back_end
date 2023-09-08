@@ -31,4 +31,6 @@ public class StudentEntity {
     private String graduation;
     private String masters;
     private String selectedCourse;
+    private String imageName;
+    private String imagePath;
 }

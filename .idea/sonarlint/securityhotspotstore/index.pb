@@ -5,16 +5,8 @@ P
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
-h
-8src/main/java/edu/icet/repository/StudentRepository.java,8\2\8286440c88e258658caf0589933ef7b365869e04
-Å
-Q.idea/sonarlint/securityhotspotstore/f/7/f7c68fb7f72046059fc8ee14228bbc292089a45c,c\3\c3817ba369be70c72c54ef3a15072e6aa1ce6c9b
 w
 G.idea/sonarlint/issuestore/9/f/9fe84ebb15faf917b7def6236dba604453cc61e0,f\0\f0e0f9cec86fe4b939ae22be5264c758801eb28f
-w
-G.idea/sonarlint/issuestore/8/2/8286440c88e258658caf0589933ef7b365869e04,c\4\c4471bea90d307e7f1876f8159166d5440ca6649
-Å
-Q.idea/sonarlint/securityhotspotstore/8/2/8286440c88e258658caf0589933ef7b365869e04,4\6\467cebaf1213c5cb592511a0df5378eb2b1407a0
 w
 G.idea/sonarlint/issuestore/8/8/88a9255124c95bdc913197c120a8d560edc59c8e,a\e\ae9ddf453f55affea2d6b9e3973cac1eb2efb4e1
 Å
@@ -23,3 +15,7 @@ Q.idea/sonarlint/securityhotspotstore/9/f/9fe84ebb15faf917b7def6236dba604453cc61
 Q.idea/sonarlint/securityhotspotstore/8/8/88a9255124c95bdc913197c120a8d560edc59c8e,9\0\909762385fc6eb20f922a91c6865741308b57f2c
 Å
 Q.idea/sonarlint/securityhotspotstore/d/0/d002a3b1d8a24022d8d1caea45cff0fbd6d07b61,c\a\caf3bc1ee199c010575829e4b9707879906509ff
+\
+,src/main/java/edu/icet/config/JPAConfig.java,e\4\e453c456e19ad35d25ea066edf4ee7663108d40d
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
