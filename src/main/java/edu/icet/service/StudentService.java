@@ -5,7 +5,6 @@ import edu.icet.dto.Student;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface StudentService {
@@ -14,9 +13,10 @@ public interface StudentService {
 
     Iterable<StudentEntity> getStudentByFirstName(String firstName);
 
+    boolean updateStudent(Long id, Student student, MultipartFile file) throws IOException;
+
     boolean deleteStudent(Long id);
 
-    boolean updateStudent(Long id, Student student);
 
     Student getStudentById(Long id);
 }

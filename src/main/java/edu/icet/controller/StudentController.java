@@ -39,8 +39,8 @@ public class StudentController {
 
     //Update Student
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateStudent(@PathVariable Long id, @RequestBody Student student) {
-        boolean updated = studentService.updateStudent(id, student);
+    public ResponseEntity<String> updateStudent(@ModelAttribute Student student,@PathVariable Long id, @RequestPart("file") MultipartFile file) throws IOException {
+        boolean updated = studentService.updateStudent(id, student, file);
         if (updated) {
             return ResponseEntity.ok("Student updated successfully");
         } else {

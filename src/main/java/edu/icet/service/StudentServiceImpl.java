@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -25,11 +26,10 @@ public class StudentServiceImpl implements StudentService {
     public void setup() {
         this.mapper = new ModelMapper();
     }
-
+    private static final String URL = "C:/Users/shara/OneDrive/Desktop/Student_Registation_Form-EE/FrontEnd/profile/";
     @Override
     public void setStudent(Student student, MultipartFile file) throws IOException {
-        final String folderPath = "C:/Users/shara/OneDrive/Desktop/Student_Registation_Form-EE/FrontEnd/profile/";
-        String filePath = folderPath + file.getOriginalFilename();
+        String filePath = URL + file.getOriginalFilename();
         StudentEntity entity = mapper.map(student, StudentEntity.class);
         entity.setImageName(file.getOriginalFilename());
         entity.setImagePath(filePath);
@@ -38,9 +38,17 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public boolean updateStudent(Long id, Student student) {
-        if (repository.existsById(id)) {
-            repository.save(mapper.map(student, StudentEntity.class));
+    public boolean updateStudent(Long id, Student student, MultipartFile file) throws IOException {
+        Optional<StudentEntity> optionalEntity = repository.findById(id);
+
+        if (optionalEntity.isPresent()) {
+            StudentEntity entity;
+            entity = mapper.map(student, StudentEntity.class);
+            String filePath = URL + file.getOriginalFilename();
+            entity.setImageName(file.getOriginalFilename());
+            entity.setImagePath(filePath);
+            repository.save(entity);
+            file.transferTo(new File(filePath));
             return true;
         } else {
             return false;
@@ -61,10 +69,9 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> getAllStudents() {
 
         List<Student> studentList = new ArrayList<>();
-        Iterator<StudentEntity> iterator = repository.findAll().iterator();
 
-        while (iterator.hasNext()) {
-            studentList.add(mapper.map(iterator.next(), Student.class));
+        for (StudentEntity studentEntity : repository.findAll()) {
+            studentList.add(mapper.map(studentEntity, Student.class));
         }
         return studentList;
 
