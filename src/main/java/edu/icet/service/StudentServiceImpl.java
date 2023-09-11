@@ -26,7 +26,10 @@ public class StudentServiceImpl implements StudentService {
     public void setup() {
         this.mapper = new ModelMapper();
     }
+
     private static final String URL = "C:/Users/shara/OneDrive/Desktop/Student_Registation_Form-EE/FrontEnd/profile/";
+
+    //------------------------------------Add Student----------------------------------->>
     @Override
     public void setStudent(Student student, MultipartFile file) throws IOException {
         String filePath = URL + file.getOriginalFilename();
@@ -37,13 +40,11 @@ public class StudentServiceImpl implements StudentService {
         file.transferTo(new File(filePath));
     }
 
+    //-----------------------------------Update Student-------------------------------->>
     @Override
     public boolean updateStudent(Long id, Student student, MultipartFile file) throws IOException {
-        Optional<StudentEntity> optionalEntity = repository.findById(id);
-
-        if (optionalEntity.isPresent()) {
-            StudentEntity entity;
-            entity = mapper.map(student, StudentEntity.class);
+        if (repository.findById(id).isPresent()) {
+            StudentEntity entity = mapper.map(student, StudentEntity.class);
             String filePath = URL + file.getOriginalFilename();
             entity.setImageName(file.getOriginalFilename());
             entity.setImagePath(filePath);
@@ -54,7 +55,7 @@ public class StudentServiceImpl implements StudentService {
             return false;
         }
     }
-
+    //-----------------------------------Delete Student--------------------------------->>
     @Override
     public boolean deleteStudent(Long id) {
         if (repository.existsById(id)) {
@@ -64,12 +65,10 @@ public class StudentServiceImpl implements StudentService {
             return false;
         }
     }
-
+    //-----------------------------------Get All Student--------------------------------->>
     @Override
     public List<Student> getAllStudents() {
-
         List<Student> studentList = new ArrayList<>();
-
         for (StudentEntity studentEntity : repository.findAll()) {
             studentList.add(mapper.map(studentEntity, Student.class));
         }
@@ -77,12 +76,12 @@ public class StudentServiceImpl implements StudentService {
 
     }
 
+    //---------------------------------Get Student By ID--------------------------------->>
     @Override
     public Student getStudentById(Long id) {
         ArrayList<Student> studentList = new ArrayList<>();
         Iterator<StudentEntity> iterator = repository.findById(id).stream().iterator();
         if (repository.existsById(id)) {
-
             while (iterator.hasNext()) {
                 studentList.add(mapper.map(iterator.next(), Student.class));
             }
@@ -93,6 +92,7 @@ public class StudentServiceImpl implements StudentService {
         }
     }
 
+    //---------------------------------Get Student By First Name-------------------------->>
     @Override
     public Iterable<StudentEntity> getStudentByFirstName(String firstName) {
         return repository.findByFirstName(firstName);

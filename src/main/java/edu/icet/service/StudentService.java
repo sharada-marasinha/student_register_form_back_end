@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface StudentService {
     void setStudent(Student student, MultipartFile file) throws IOException;
+
     List<Student> getAllStudents();
 
     Iterable<StudentEntity> getStudentByFirstName(String firstName);

@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/student")
@@ -17,29 +18,14 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    //Get All Student
+    //-----------------------------------Add Student----------------------------------->>
     @PostMapping
     public void setStudents(@ModelAttribute Student student, @RequestPart("file") MultipartFile file) throws IOException {
-        studentService.setStudent(student,file);
+        studentService.setStudent(student, file);
     }
-    @GetMapping
-    public List<Student> getAllStudent(){
-        return studentService.getAllStudents();
-    }
-    //Get Student By First Name
-    @GetMapping("/{firstName}")
-    public Iterable<StudentEntity> getStudentByFirstName(@PathVariable String firstName){
-        return studentService.getStudentByFirstName(firstName);
-    }
-    //Get Student By id
-    @GetMapping("std-id/{id}")
-    public Student getStudentByFirstName(@PathVariable Long id){
-        return studentService.getStudentById(id);
-    }
-
-    //Update Student
+    //----------------------------------Update Student-------------------------------->>
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateStudent(@ModelAttribute Student student,@PathVariable Long id, @RequestPart("file") MultipartFile file) throws IOException {
+    public ResponseEntity<String> updateStudent(@ModelAttribute Student student, @PathVariable Long id, @RequestPart("file") MultipartFile file) throws IOException {
         boolean updated = studentService.updateStudent(id, student, file);
         if (updated) {
             return ResponseEntity.ok("Student updated successfully");
@@ -47,7 +33,7 @@ public class StudentController {
             return ResponseEntity.notFound().build();
         }
     }
-    //Delete Student
+    //----------------------------------Delete Student--------------------------------->>
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteStudent(@PathVariable Long id) {
         boolean deleted = studentService.deleteStudent(id);
@@ -57,6 +43,19 @@ public class StudentController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    //----------------------------------------------------------------------------------------------------
+    //---------------------------------Get All Student--------------------------------->>
+    @GetMapping
+    public List<Student> getAllStudent() {
+        return studentService.getAllStudents();
+    }
+    //------------------------------Get Student By First Name-------------------------->>
+    @GetMapping("/{firstName}")
+    public Iterable<StudentEntity> getStudentByFirstName(@PathVariable String firstName) {
+        return studentService.getStudentByFirstName(firstName);
+    }
+    //---------------------------------Get Student By id------------------------------->>
+    @GetMapping("std-id/{id}")
+    public Student getStudentByFirstName(@PathVariable Long id) {
+        return studentService.getStudentById(id);
+    }
 }
