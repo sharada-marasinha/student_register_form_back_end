@@ -1,8 +1,10 @@
 package edu.icet.service;
 
+import edu.icet.annotations.MethodStat;
 import edu.icet.dao.StudentEntity;
 import edu.icet.dto.Student;
 import edu.icet.repository.StudentRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +18,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @Service
+@Slf4j
 public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentRepository repository;
@@ -65,18 +68,24 @@ public class StudentServiceImpl implements StudentService {
         }
     }
     //-----------------------------------Get All Student--------------------------------->>
+
+
     @Override
+    @MethodStat
     public List<Student> getAllStudents() {
         List<Student> studentList = new ArrayList<>();
         for (StudentEntity studentEntity : repository.findAll()) {
             studentList.add(mapper.map(studentEntity, Student.class));
         }
+
+
         return studentList;
 
     }
 
     //---------------------------------Get Student By ID--------------------------------->>
     @Override
+    @MethodStat
     public Student getStudentById(Long id) {
         ArrayList<Student> studentList = new ArrayList<>();
         Iterator<StudentEntity> iterator = repository.findById(id).stream().iterator();
