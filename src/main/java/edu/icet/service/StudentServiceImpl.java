@@ -33,6 +33,7 @@ public class StudentServiceImpl implements StudentService {
 
     //------------------------------------Add Student----------------------------------->>
     @Override
+    @MethodStat
     public void setStudent(Student student, MultipartFile file) throws IOException {
         String filePath = URL + file.getOriginalFilename();
         StudentEntity entity = mapper.map(student, StudentEntity.class);
@@ -44,6 +45,7 @@ public class StudentServiceImpl implements StudentService {
 
     //-----------------------------------Update Student-------------------------------->>
     @Override
+    @MethodStat
     public boolean updateStudent(Long id, Student student, MultipartFile file) throws IOException {
         if (repository.findById(id).isPresent()) {
             StudentEntity entity = mapper.map(student, StudentEntity.class);
@@ -59,6 +61,7 @@ public class StudentServiceImpl implements StudentService {
     }
     //-----------------------------------Delete Student--------------------------------->>
     @Override
+    @MethodStat
     public boolean deleteStudent(Long id) {
         if (repository.existsById(id)) {
             repository.deleteById(id);
@@ -102,6 +105,7 @@ public class StudentServiceImpl implements StudentService {
 
     //---------------------------------Get Student By First Name-------------------------->>
     @Override
+    @MethodStat
     public Iterable<StudentEntity> getStudentByFirstName(String firstName) {
         return repository.findByFirstName(firstName);
     }
