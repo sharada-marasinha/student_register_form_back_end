@@ -18,6 +18,12 @@ This Spring Boot application serves as the back end for a student registration f
 
 To run this application locally, follow these steps:
 
+## Swagger Url
+
+   ```bash
+   http://localhost:8080/swagger-ui/index.html#
+   ```
+
 1. Clone the repository:
 
     ```bash
