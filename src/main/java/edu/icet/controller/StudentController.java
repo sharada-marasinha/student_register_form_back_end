@@ -26,22 +26,18 @@ public class StudentController {
     //----------------------------------Update Student-------------------------------->>
     @PutMapping("/{id}")
     public ResponseEntity<String> updateStudent(@ModelAttribute Student student, @PathVariable Long id, @RequestPart("file") MultipartFile file) throws IOException {
-        boolean updated = studentService.updateStudent(id, student, file);
-        if (updated) {
-            return ResponseEntity.ok("Student updated successfully");
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return studentService.updateStudent(id, student, file)?
+            ResponseEntity.ok("Student updated successfully"):
+            ResponseEntity.notFound().build();
+
     }
     //----------------------------------Delete Student--------------------------------->>
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteStudent(@PathVariable Long id) {
-        boolean deleted = studentService.deleteStudent(id);
-        if (deleted) {
-            return ResponseEntity.ok("Student deleted successfully");
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+       return studentService.deleteStudent(id)?
+               ResponseEntity.ok("Student deleted successfully"):
+               ResponseEntity.notFound().build();
+
     }
     //---------------------------------Get All Student--------------------------------->>
     @GetMapping
