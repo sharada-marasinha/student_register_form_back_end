@@ -3,7 +3,9 @@ package edu.icet.controller;
 import edu.icet.dao.StudentEntity;
 import edu.icet.dto.Student;
 import edu.icet.service.StudentService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,12 +16,14 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/student")
+@RequiredArgsConstructor
 public class StudentController {
-    @Autowired
-    private StudentService studentService;
+
+    private final StudentService studentService;
 
     //-----------------------------------Add Student----------------------------------->>
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public void setStudents(@ModelAttribute Student student, @RequestPart("file") MultipartFile file) throws IOException {
         studentService.setStudent(student, file);
     }
@@ -29,7 +33,6 @@ public class StudentController {
         return studentService.updateStudent(id, student, file)?
             ResponseEntity.ok("Student updated successfully"):
             ResponseEntity.notFound().build();
-
     }
     //----------------------------------Delete Student--------------------------------->>
     @DeleteMapping("/{id}")
@@ -37,7 +40,6 @@ public class StudentController {
        return studentService.deleteStudent(id)?
                ResponseEntity.ok("Student deleted successfully"):
                ResponseEntity.notFound().build();
-
     }
     //---------------------------------Get All Student--------------------------------->>
     @GetMapping

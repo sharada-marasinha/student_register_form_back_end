@@ -4,6 +4,7 @@ import edu.icet.annotations.MethodStat;
 import edu.icet.dao.StudentEntity;
 import edu.icet.dto.Student;
 import edu.icet.repository.StudentRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,10 @@ import java.util.List;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
-    @Autowired
-    private StudentRepository repository;
+
+    private final StudentRepository repository;
     private ModelMapper mapper;
 
     @Bean
